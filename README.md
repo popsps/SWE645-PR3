@@ -10,6 +10,7 @@ For this project we will be using 3 Amazon `EC2` instances to serve each service
 
 # UNDERSTANDING THIS PROJECT FROM SCRATCH
 
+
 ## JENKINS
 
 To build and run this project we will be using `Jenkins` to automate the build. To achieve this goal we simply run `docker stack deploy -c ./docker-compose.yml swe645` in our `Jenkins` build section.
