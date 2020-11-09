@@ -1,0 +1,46 @@
+version: "3"
+
+volumes:
+  swe-data:
+
+services:
+  swe645-mysql:
+    build: ./mysql_init
+    image: mysql-db
+    container_name: swe645-mysql
+    volumes: 
+      - swe-data:/var/lib/mysql
+    ports: 
+      - 5306:3306
+    environment: 
+      - MYSQL_USER=javaadmin
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_DATABASE=swedb
+
+
+  swe645-backend:
+    build: ./backend
+    image: tomcat-backend
+    container_name: swe645-backend
+    environment:
+      - DB_SERVER=swe645-mysql
+      - MYSQL_DATABASE=swedb
+      - MYSQL_USER=javaadmin
+      - MYSQL_ROOT_PASSWORD=admin
+    ports:
+      - 8080:8080
+    links:
+      - swe645-mysql
+
+  swe645-frontend:
+    build: ./frontend
+    image: nginx-frontend
+    container_name: swe645-frontend
+    ports:
+      - 80:80
+    links:
+      - swe645-backend
+
+
+
+
