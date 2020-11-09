@@ -1,0 +1,67 @@
+<div class="container py-5">
+  <!--  form-->
+  <form id="survey-form" autocomplete="on">
+    <fieldset>
+      <div class="form-group">
+        <label>
+          <div class="form-flex">
+            <i class="fa fa-asterisk" style="color: #b35555"></i>
+            <input type="number" id="studentID" name="studentID" class="form-control"
+                   placeholder="GNumber" value="{{student.studentID}}" readonly>
+            <i class="fa fa-asterisk" style="color: #b35555"></i>
+            <input type="text" id="fname" name="fname" class="form-control"
+                   placeholder="First Name" value="{{student.fName}}" readonly>
+            <i class="fa fa-asterisk" style="color: #b35555"></i>
+            <input type="text" id="lname" name="lname" class="form-control"
+                   placeholder="Last Name" value="{{student.lName}}" readonly>
+          </div>
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="email">
+          <div class="form-flex">
+            <i class="fa fa-asterisk" style="color: #b35555"></i>
+            <input type="email" class="form-control" id="email" name="email"
+                   placeholder="email@example.com" value="{{student.email}}" required readonly>
+          </div>
+        </label>
+      </div>
+      <div class="form-group">
+        <label style="width: 90%;">
+          <input type="text" id="street" name="street" class="form-control"
+                 placeholder="street" value="{{student.street}}" readonly>
+        </label>
+      </div>
+      <div class="form-group">
+        <div class="form-flex">
+          <label>
+            <input type="number" class="form-control" id="zip" name="zipcode"
+                   placeholder="Zip" value="{{student.zipcode}}" readonly>
+          </label>
+          <label>
+            <input type="text" class="form-control" id="city" name="city"
+                   placeholder="City" value="{{student.city}}" readonly>
+          </label>
+          <label>
+            <input class="form-control" type="text" id="state" name="state"
+                   placeholder="State" value="{{student.state}}" readonly>
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>
+          <div class="form-flex">
+            <input type="text" class="form-control" id="phone"
+                   name="phone" placeholder="Phone" value="{{student.phone}}" readonly>
+          </div>
+        </label>
+      </div>
+      <div class="form-group">
+        <div class="form-flex">
+          <input type="text" class="form-control"
+                 placeholder="Date" value="{{student.visitedAt}}" readonly>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
