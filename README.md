@@ -248,7 +248,7 @@ swe645-hw3
 │           ├── java
 │           │   └── com
 │           │       └── swe645
-│           │           ├── FormServlet.java  # api: submit form, get student
+│           │           ├── FormServlet.java  # api: submit form, get student by id
 │           │           ├── ListAllStudentsServlet.java # api: get all students
 │           │           ├── StudentBean.java # Student bean class 
 │           │           └── StudentDAO.java # Database operations
@@ -287,10 +287,10 @@ swe645-hw3
 │   │   │       ├── navigation # navbar
 │   │   │       │   ├── navigation.component.html
 │   │   │       │   └── navigation.component.ts
-│   │   │       ├── student # get a single student form in readonly
+│   │   │       ├── student # api call(get) to FormServlet to get a single student form in readonly
 │   │   │       │   ├── student.component.html
 │   │   │       │   └── student.component.ts
-│   │   │       └── survey # student survey page. api call to FormServlet
+│   │   │       └── survey # student survey page. api call(post) to FormServlet
 │   │   │           ├── survey.component.html
 │   │   │           └── survey.component.ts
 │   │   └── styles.scss
