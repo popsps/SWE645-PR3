@@ -1,23 +1,22 @@
-# SWE645-HW3
+# SWE645-PROJECT3
 
-This project is a container orchestration of 3 services. A frontend web application implemented using `Angular`. A backend application implemented using `JAVA EE`. And finally a persistent `MySQL` database to keep track of data. In this piece, we will explain each of these services in more detail.
+This project is a container orchestration of 3 services. A frontend web application implemented using `Angular` and `nginx`. A backend application implemented using `JAVA EE` and `Tomcat`. And finally a persistent `MySQL` database to keep track of data. In this piece, we will explain each of these services in more detail.
 
 ## BUILD
 
 To build and run this project you will need to have `Docker` installed on your machine. We will be using `Docker Swarm` for orchestration of services. To build and run this project simply run `docker stack deploy -c ./docker-compose.yml swe645`. This will create 3 types of services.
 
-For this project we will be using 3 Amazon `EC2` instances to serve each services. The setup is exactly as we have previously constructed and can be found at [SWE645-HW2]().
+For this project we will be using 3 Amazon `EC2` instances to serve each services. The setup for this is exactly as we have previously constructed and can be found at [SWE645-HW2](https://github.com/popsps/SWE645-group-project).
 
-# UNDERSTANDING THIS PROJECT FROM SCRATCH
-
+# UNDERSTANDING PROJECT FROM SCRATCH
 
 ## JENKINS
 
-To build and run this project we will be using `Jenkins` to automate the build. To achieve this goal we simply run `docker stack deploy -c ./docker-compose.yml swe645` in our `Jenkins` build section.
+To build and run this project we will be using `Jenkins` to automate the build. To achieve this goal we simply run the command `docker stack deploy -c ./docker-compose.yml swe645` in our `Jenkins` build section.
 
 ## **`docker-compose.yml`**
 
-Let's dive into our setup. `docker-compose.yml` is responsible for creating 3 containerized services and linking them together. Here is the code. 
+Let's dive a little deeper into our setup. `docker-compose.yml` is responsible for creating 3 containerized services and linking them together. Here is the code. 
 
 ```yml
 version: "3"
@@ -68,7 +67,7 @@ services:
 
 ### CONTAINERIZED MYSQL DATABASE BUILD
 
-The first service, `swe645-mysql` is responsible for building a `MySQL` database. We will build our `mySQL` database from a `Dockerfile` in `mysql_init` directory. Set all environment variables that we need, namely, `user`, `password`, and the `database`. And finally we will be using `volumes` to save `MySQL` data on host to be able to make the database **persistent**. The volume name is `swe-data` with the orchestration(swarm) name added to it as a prefix end up being `swe645_swe-data`. By the end of your build you can verify this by running `docker volume ls`. Here is the MySQL `Dockerfile`. 
+The first service, `swe645-mysql` is responsible for building a `MySQL` database. We will build our `mySQL` database from a `Dockerfile` in `mysql_init` directory. Set all environment variables that we need, namely, `user`, `password`, and the `database`. And finally we will be using `volumes` to save `MySQL` data on the host to be able to make the database **persistent**. The volume's name is `swe-data` with the orchestration(swarm) name added to it as a prefix ends up being `swe645_swe-data`. By the end of your build you can verify this by running `docker volume ls`. Here is the MySQL `Dockerfile`. 
 
 ```Dockerfile
 FROM mysql:latest
@@ -79,7 +78,7 @@ COPY ./table_init.sql /docker-entrypoint-initdb.d
 EXPOSE 3306
 ```
 
-We will be using `table_init.sql` to initiate a `Schema` named `student` on startup. This will create a table called `student` in `swedb` database, if the table already does not exist. Here is schema we are using for the initiation of our database.
+We will be using `table_init.sql` to initiate a `Schema` named `student` on startup. This will create a table called `student` in `swedb` database only if the table already does not exist. Here is the schema we are using for the initiation of our table in `swedb` database.
 
 ```sql
 CREATE TABLE student (
@@ -98,7 +97,7 @@ CREATE TABLE student (
 
 ### CONTAINERIZED BACKEND BUILD
 
-We will build the backend based on the `Dockerfile` at `./backend` directory. 
+We will build the backend based on a `Dockerfile` in `./backend` directory. 
 
 ```Dockerfile
 FROM maven:alpine AS maven_builder
@@ -118,7 +117,7 @@ Next, we will copy this `war` file into a `alpine tomcat` `webapps` directory an
 
 ### CONTAINERIZED FRONTEND BUILD
 
-We will build the backend based on the `Dockerfile` at `./frontend` directory. 
+We will build the backend based on a `Dockerfile` in `./frontend` directory. 
 
 ```Dockerfile
 FROM node:alpine AS angular_builder
@@ -135,9 +134,9 @@ COPY --from=angular_builder /user/src/app/dist/frontend /usr/share/nginx/html
 EXPOSE 80
 ```
 
-The frontend is an `Angular` application. First we build the `Angular` application by an `alpine node` image. We copy the `package.json` over to build our project dependencies. Then we will install `Angular client` to be able run angular commands. Finally we `build` the `Angular` app using `npm run build`. This will build the entire frontend project into `/user/src/app/dist/frontend`.
+The frontend is an `Angular` application. First we build the `Angular` application by an `alpine node` image. We copy the `package.json` over there to build our project dependencies. Then we will install `Angular client` to be able run angular commands. Finally we `build` the `Angular` app using `npm run build`. This will build the entire frontend project into `/user/src/app/dist/frontend`.
 
-Next, we want to copy this build folder (`/dist/frontend`) to a new and our final container which runs an `alpine nginx` server. We expose port 80 and serve the static files on this slim `nginx` to the end user. You may notice we have a file called `default.conf` copied over. This file changes the proxy so that the frontend direct the api calls to the backend instead. Here how it looks like.
+Next, we want to copy this build folder (`/dist/frontend`) to a new and our final container which runs an `alpine nginx` server. We expose port 80 and serve the static files on this slim `nginx` to the end user. You may notice we have a file called `default.conf` copied over. This file changes the proxy settings so that the frontend direct the api calls to the backend instead. Here how it looks like.
 
 ```nginxconf
 server {
@@ -236,7 +235,7 @@ we are using `javax.servlet` to handle our `api` calls. We are using `mysql-conn
 
 ## PROJECT TREE STRUCTURE
 
-Here is the tree view of my application with some annotation. 
+Here is the tree view of my application with some annotation if you want to quickly find out what files and components are important to look for. 
 
 ```treeview
 swe645-hw3
