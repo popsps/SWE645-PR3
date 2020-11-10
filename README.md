@@ -12,7 +12,16 @@ For this project we will be using 3 Amazon `EC2` instances to serve each service
 
 ## JENKINS
 
-To build and run this project we will be using `Jenkins` to automate the build. To achieve this goal we simply run the command `docker stack deploy -c ./docker-compose.yml swe645` in our `Jenkins` build section.
+To build and run this project we will be using `Jenkins` to automate the build. To achieve this goal we simply run this script.
+
+```sh
+docker service rm $(docker service ls -q) || true # remove all previous services 
+docker service create --name registry --publish 5000:5000 registry:2 # service registry to make images availabel cross nodes
+docker-compose up -d # make images
+docker-compose down --volumes # remove container created by compose
+docker-compose push # make images availbe acrosss nodes
+docker stack deploy -c ./docker-compose.yml swe645 # run the container ochestration stack
+```
 
 ## **`docker-compose.yml`**
 
@@ -26,11 +35,15 @@ volumes:
 
 services:
   swe645-mysql:
+    image: 127.0.0.1:5000/mysql-db
     build: ./mysql_init
-    image: mysql-db
     container_name: swe645-mysql
     volumes: 
       - swe-data:/var/lib/mysql
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == master-172-31-68-137
     ports: 
       - 5306:3306
     environment: 
@@ -39,8 +52,8 @@ services:
       - MYSQL_DATABASE=swedb
 
   swe645-backend:
+    image: 127.0.0.1:5000/tomcat-backend
     build: ./backend
-    image: tomcat-backend
     container_name: swe645-backend
     environment:
       - DB_SERVER=swe645-mysql
@@ -48,18 +61,23 @@ services:
       - MYSQL_USER=javaadmin
       - MYSQL_ROOT_PASSWORD=admin
     ports:
-      - 8080:8080
+      - 8081:8080
     links:
       - swe645-mysql
 
   swe645-frontend:
+    image: 127.0.0.1:5000/nginx-frontend
     build: ./frontend
-    image: nginx-frontend
     container_name: swe645-frontend
     ports:
       - 80:80
     links:
       - swe645-backend
+
+
+
+
+
 ```
 ### NETWORK
 
