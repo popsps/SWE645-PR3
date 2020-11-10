@@ -183,11 +183,11 @@ public class StudentBean implements Serializable {
     this.visitedAt = visitedAt;
   }
 
-  public String getFDate() {
+  public String getfDate() {
     return fDate;
   }
 
-  public void setFDate(String fDate) {
+  public void setfDate(String fDate) {
     this.fDate = fDate;
   }
 }

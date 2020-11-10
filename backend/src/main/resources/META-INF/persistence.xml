@@ -16,14 +16,14 @@
       <property name="javax.persistence.jdbc.password"
                 value="admin"/>
       <!--      For testing on local machine-->
-      <!--            <property name="javax.persistence.jdbc.driver"-->
-      <!--                      value="com.mysql.jdbc.Driver"/>-->
-      <!--            <property name="javax.persistence.jdbc.url"-->
-      <!--                      value="jdbc:mysql://localhost:3306/test1"/>-->
-      <!--            <property name="javax.persistence.jdbc.user"-->
-      <!--                      value="javaadmin"/>-->
-      <!--            <property name="javax.persistence.jdbc.password"-->
-      <!--                      value="ppooiiuu"/>-->
+      <!--      <property name="javax.persistence.jdbc.driver"-->
+      <!--                value="com.mysql.jdbc.Driver"/>-->
+      <!--      <property name="javax.persistence.jdbc.url"-->
+      <!--                value="jdbc:mysql://localhost:3306/test1"/>-->
+      <!--      <property name="javax.persistence.jdbc.user"-->
+      <!--                value="javaadmin"/>-->
+      <!--      <property name="javax.persistence.jdbc.password"-->
+      <!--                value="ppooiiuu"/>-->
     </properties>
 
   </persistence-unit>
