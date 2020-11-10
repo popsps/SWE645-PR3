@@ -10,6 +10,10 @@ services:
     container_name: swe645-mysql
     volumes: 
       - swe-data:/var/lib/mysql
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == master-172-31-68-137
     ports: 
       - 5306:3306
     environment: 
