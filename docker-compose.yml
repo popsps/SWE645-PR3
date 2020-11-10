@@ -5,8 +5,8 @@ volumes:
 
 services:
   swe645-mysql:
+    image: 127.0.0.1:5000/mysql-db
     build: ./mysql_init
-    image: mysql-db
     container_name: swe645-mysql
     volumes: 
       - swe-data:/var/lib/mysql
@@ -18,8 +18,8 @@ services:
       - MYSQL_DATABASE=swedb
 
   swe645-backend:
+    image: 127.0.0.1:5000/tomcat-backend
     build: ./backend
-    image: tomcat-backend
     container_name: swe645-backend
     environment:
       - DB_SERVER=swe645-mysql
@@ -32,8 +32,8 @@ services:
       - swe645-mysql
 
   swe645-frontend:
+    image: 127.0.0.1:5000/nginx-frontend
     build: ./frontend
-    image: nginx-frontend
     container_name: swe645-frontend
     ports:
       - 80:80
