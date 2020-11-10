@@ -1,4 +1,4 @@
-# SWE645-PROJECT3 test 3
+# SWE645-PROJECT3 test 4
 
 This project is a container orchestration of 3 services. A frontend web application implemented using `Angular` and `nginx`. A backend application implemented using `JAVA EE` and `Tomcat`. And finally a persistent `MySQL` database to keep track of data. In this piece, we will explain each of these services in more detail.
 
