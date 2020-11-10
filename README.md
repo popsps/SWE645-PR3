@@ -16,10 +16,10 @@ To build and run this project we will be using `Jenkins` to automate the build. 
 
 ```sh
 docker service rm $(docker service ls -q) || true # remove all previous services 
-docker service create --name registry --publish 5000:5000 registry:2 # service registry to make images availabel cross nodes
+docker service create --name registry --publish 5000:5000 registry:2 # service registry to make images available across nodes
 docker-compose up -d # make images
 docker-compose down --volumes # remove container created by compose
-docker-compose push # make images availbe acrosss nodes
+docker-compose push # make images availbe across nodes
 docker stack deploy -c ./docker-compose.yml swe645 # run the container ochestration stack
 ```
 
