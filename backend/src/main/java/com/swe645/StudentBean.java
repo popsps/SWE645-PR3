@@ -34,6 +34,8 @@ public class StudentBean implements Serializable {
   private String email;
   @Column(name = "visited_at")
   private Timestamp visitedAt;
+  @Column(name = "fdate")
+  private String fDate;
 
   public StudentBean(int studentID, String fName, String lName, String street, int zipcode, String city, String state, String phone, String email, Timestamp visitedAt) {
     this.studentID = studentID;
@@ -61,6 +63,20 @@ public class StudentBean implements Serializable {
     this.visitedAt = null;
   }
 
+  public StudentBean(int studentID, String fName, String lName, String street, int zipcode, String city, String state, String phone, String email, String fDate, Timestamp visitedAt) {
+    this.studentID = studentID;
+    this.fName = fName;
+    this.lName = lName;
+    this.street = street;
+    this.zipcode = zipcode;
+    this.city = city;
+    this.state = state;
+    this.phone = phone;
+    this.email = email;
+    this.fDate = fDate;
+    this.visitedAt = visitedAt;
+  }
+
   public StudentBean() {
     this.studentID = 0;
     this.fName = "";
@@ -71,6 +87,7 @@ public class StudentBean implements Serializable {
     this.state = "";
     this.phone = "";
     this.email = "";
+    this.fDate = "";
   }
 
   public void clone(StudentBean newStudent) {
@@ -164,5 +181,13 @@ public class StudentBean implements Serializable {
 
   public void setVisitedAt(Timestamp visitedAt) {
     this.visitedAt = visitedAt;
+  }
+
+  public String getFDate() {
+    return fDate;
+  }
+
+  public void setFDate(String fDate) {
+    this.fDate = fDate;
   }
 }

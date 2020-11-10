@@ -11,6 +11,7 @@ type StudentModel = {
   city: string;
   state: string;
   phone: string;
+  fDate: string;
 };
 
 @Component({
@@ -27,6 +28,7 @@ export class SurveyComponent implements OnInit {
     phone: '',
     state: '',
     street: '',
+    fDate: '',
     studentID: undefined,
     zipcode: undefined
   };
@@ -38,7 +40,7 @@ export class SurveyComponent implements OnInit {
   }
 
   submit(): void {
-    console.log('submit');
+    console.log('----------------submit----------------');
     console.log(this.student);
     const options = {
       method: 'POST',
@@ -55,7 +57,10 @@ export class SurveyComponent implements OnInit {
         this.router.navigate(['/acknowledgment'],
           {state: this.student}).then(r => console.log('navigation successful'));
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err);
+        this.router.navigate(['/acknowledgment']);
+      });
   }
 
-  }
+}

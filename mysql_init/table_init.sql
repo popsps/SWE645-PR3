@@ -8,5 +8,6 @@ CREATE TABLE student (
     city varchar(255) not null,
     phone varchar(50) not null,
     email varchar(50) not null,
+    fdate varchar(50) not null,
     visited_at timestamp
 );

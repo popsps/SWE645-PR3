@@ -1,6 +1,7 @@
 <div class="container py-5">
   <!--  form-->
-  <form id="survey-form" autocomplete="on" #studentForm="ngForm" (ngSubmit)="submit()">
+  <form id="survey-form" autocomplete="on" #studentForm="ngForm"
+        ngNativeValidate (ngSubmit)="submit()">
     <!--    {{studentForm.value | json}}-->
     <fieldset>
       <legend class="h3">Hey patriot please fill in the form</legend>
@@ -31,22 +32,22 @@
       <div class="form-group">
         <label style="width: 90%;">
           <input [(ngModel)]="student.street" type="text" id="street" name="street" class="form-control"
-                 placeholder="street">
+                 placeholder="street" required>
         </label>
       </div>
       <div class="form-group">
         <div class="form-flex">
           <label>
             <input [(ngModel)]="student.zipcode" type="number" class="form-control" id="zip" name="zipcode"
-                   placeholder="Zip">
+                   placeholder="Zip" required>
           </label>
           <label>
             <input [(ngModel)]="student.city" type="text" class="form-control" id="city" name="city"
-                   placeholder="City">
+                   placeholder="City" required>
           </label>
           <label>
             <input [(ngModel)]="student.state" class="form-control" type="text" id="state" name="state"
-                   placeholder="State">
+                   placeholder="State" required>
           </label>
         </div>
       </div>
@@ -59,15 +60,15 @@
         </label>
       </div>
       <div class="form-group">
-        <input type="url" class="form-control"
-               placeholder="URL">
-      </div>
-      <div class="form-group">
         <div class="form-flex">
           <i>Date</i>
-          <input type="date" class="form-control"
-                 placeholder="Date">
+          <input [(ngModel)]="student.fDate" name="date" type="date" class="form-control"
+                 placeholder="Date" required>
         </div>
+      </div>
+      <div class="form-group">
+        <input type="url" class="form-control"
+               placeholder="URL">
       </div>
       <div class="form-group">
         <legend>When do you graduate from high-school?</legend>

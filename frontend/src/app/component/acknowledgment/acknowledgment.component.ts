@@ -11,6 +11,7 @@ type StudentModel = {
   city: string;
   state: string;
   phone: string;
+  fDate: string;
 };
 
 @Component({
@@ -22,8 +23,11 @@ export class AcknowledgmentComponent implements OnInit {
   student: StudentModel;
 
   constructor(private router: Router) {
-    this.student = this.router.getCurrentNavigation().extras.state as StudentModel;
-    console.log('ack:', this.student.fName);
+    try {
+      this.student = this.router.getCurrentNavigation().extras.state as StudentModel;
+      console.log('ack:', this.student.fName);
+    } catch (err) {
+    }
   }
 
   ngOnInit(): void {

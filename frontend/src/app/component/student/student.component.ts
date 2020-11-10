@@ -12,6 +12,7 @@ type StudentModel = {
   state: string;
   phone: string;
   visitedAt: string;
+  fDate: string;
 };
 
 @Component({
