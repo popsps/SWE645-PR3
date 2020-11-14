@@ -37,6 +37,122 @@ public class StudentBean implements Serializable {
   @Column(name = "fdate")
   private String fDate;
 
+
+  @Column(name = "recommend")
+  private String recommend;
+  @Column(name = "howknow")
+  private String howknow;
+  @Column(name = "comments")
+  private String comments;
+
+  @Column(name = "_students")
+  private boolean _students;
+  @Column(name = "_location")
+  private boolean _location;
+  @Column(name = "_campus")
+  private boolean _campus;
+  @Column(name = "_atmosphere")
+  private boolean _atmosphere;
+  @Column(name = "_dormrooms")
+  private boolean _dormrooms;
+  @Column(name = "_sports")
+  private boolean _sports;
+
+  public StudentBean(int studentID, String fName, String lName, String street, int zipcode, String city, String state, String phone, String email, Timestamp visitedAt, String fDate, String recommend, String howknow, String comments, boolean _students, boolean _location, boolean _campus, boolean _atmosphere, boolean _dormrooms, boolean _sports) {
+    this.studentID = studentID;
+    this.fName = fName;
+    this.lName = lName;
+    this.street = street;
+    this.zipcode = zipcode;
+    this.city = city;
+    this.state = state;
+    this.phone = phone;
+    this.email = email;
+    this.visitedAt = visitedAt;
+    this.fDate = fDate;
+    this.recommend = recommend;
+    this.howknow = howknow;
+    this.comments = comments;
+    this._students = _students;
+    this._location = _location;
+    this._campus = _campus;
+    this._atmosphere = _atmosphere;
+    this._dormrooms = _dormrooms;
+    this._sports = _sports;
+  }
+
+  public boolean is_students() {
+    return _students;
+  }
+
+  public void set_students(boolean _students) {
+    this._students = _students;
+  }
+
+  public boolean is_location() {
+    return _location;
+  }
+
+  public void set_location(boolean _location) {
+    this._location = _location;
+  }
+
+  public boolean is_campus() {
+    return _campus;
+  }
+
+  public void set_campus(boolean _campus) {
+    this._campus = _campus;
+  }
+
+  public boolean is_atmosphere() {
+    return _atmosphere;
+  }
+
+  public void set_atmosphere(boolean _atmosphere) {
+    this._atmosphere = _atmosphere;
+  }
+
+  public boolean is_dormrooms() {
+    return _dormrooms;
+  }
+
+  public void set_dormrooms(boolean _dormrooms) {
+    this._dormrooms = _dormrooms;
+  }
+
+  public boolean is_sports() {
+    return _sports;
+  }
+
+  public void set_sports(boolean _sports) {
+    this._sports = _sports;
+  }
+
+  public String getRecommend() {
+    return recommend;
+  }
+
+  public void setRecommend(String recommend) {
+    this.recommend = recommend;
+  }
+
+  public String getHowknow() {
+    return howknow;
+  }
+
+  public void setHowknow(String howknow) {
+    this.howknow = howknow;
+  }
+
+  public String getComments() {
+    return comments;
+  }
+
+  public void setComments(String comments) {
+    this.comments = comments;
+  }
+
   public StudentBean(int studentID, String fName, String lName, String street, int zipcode, String city, String state, String phone, String email, Timestamp visitedAt) {
     this.studentID = studentID;
     this.fName = fName;

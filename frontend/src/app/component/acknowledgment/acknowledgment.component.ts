@@ -12,6 +12,15 @@ type StudentModel = {
   state: string;
   phone: string;
   fDate: string;
+  recommend: string;
+  howknow: string;
+  comments: string;
+  _students: boolean;
+  _location: boolean;
+  _campus: boolean;
+  _atmosphere: boolean;
+  _dormrooms: boolean;
+  _sports: boolean;
 };
 
 @Component({

@@ -12,6 +12,15 @@ type StudentModel = {
   state: string;
   phone: string;
   fDate: string;
+  recommend: string;
+  howknow: string;
+  comments: string;
+  _students: boolean;
+  _location: boolean;
+  _campus: boolean;
+  _atmosphere: boolean;
+  _dormrooms: boolean;
+  _sports: boolean;
 };
 
 @Component({
@@ -21,6 +30,15 @@ type StudentModel = {
 })
 export class SurveyComponent implements OnInit {
   student: StudentModel = {
+    _atmosphere: false,
+    _campus: false,
+    _dormrooms: false,
+    _location: false,
+    _sports: false,
+    _students: false,
+    comments: '',
+    howknow: '',
+    recommend: '',
     city: '',
     email: '',
     fName: '',

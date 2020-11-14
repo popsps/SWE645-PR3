@@ -2,12 +2,9 @@
   <!--  form-->
   <form id="survey-form" autocomplete="on" #studentForm="ngForm"
         ngNativeValidate (ngSubmit)="submit()">
-    <!--    {{studentForm.value | json}}  -->
+    {{studentForm.value | json}}
     <fieldset>
-<<<<<<< HEAD
       <!-- <legend class="h3">Hey patriot please fill in the form</legend> -->
-=======
->>>>>>> 04309bf60b79d44d88a5465cb33f82590b286a70
       <div class="form-group">
         <label>
           <div class="form-flex">
@@ -97,7 +94,7 @@
       <div class="form-group">
         <legend for="exampleSelect1">How likely would you be recommending George Mason to other prospective students?
         </legend>
-        <select class="form-control" id="exampleSelect1">
+        <select [(ngModel)]="student.recommend" name="recommend" class="form-control" id="exampleSelect1">
           <option>Very Likely</option>
           <option>Likely</option>
           <option>Unlikely</option>
@@ -107,37 +104,37 @@
         <legend>what did you like most about the campus?</legend>
         <div class="form-check">
           <label class="form-check-label">
-            <input class="form-check-input" type="checkbox">
+            <input [(ngModel)]="student._students" name="students" class="form-check-input" type="checkbox">
             students
           </label>
         </div>
         <div class="form-check">
           <label class="form-check-label">
-            <input class="form-check-input" type="checkbox">
+            <input [(ngModel)]="student._location" name="location" class="form-check-input" type="checkbox">
             location
           </label>
         </div>
         <div class="form-check">
           <label class="form-check-label">
-            <input class="form-check-input" type="checkbox">
+            <input [(ngModel)]="student._campus" name="campus" class="form-check-input" type="checkbox">
             campus
           </label>
         </div>
         <div class="form-check">
           <label class="form-check-label">
-            <input class="form-check-input" type="checkbox">
+            <input [(ngModel)]="student._atmosphere" name="atmosphere" class="form-check-input" type="checkbox">
             atmosphere
           </label>
         </div>
         <div class="form-check">
           <label class="form-check-label">
-            <input class="form-check-input" type="checkbox">
+            <input [(ngModel)]="student._dormrooms" name="dormrooms" class="form-check-input" type="checkbox">
             dorm rooms
           </label>
         </div>
         <div class="form-check">
           <label class="form-check-label">
-            <input class="form-check-input" type="checkbox">
+            <input [(ngModel)]="student._sports" name="sports" class="form-check-input" type="checkbox">
             sports
           </label>
         </div>
@@ -145,31 +142,35 @@
           <legend>How did you become interested in us?</legend>
           <div class="form-check">
             <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="friends">
+              <input [(ngModel)]="student.howknow" name="howknow" type="radio" class="form-check-input"
+                     id="optionsRadios1" value="friends">
               friends
             </label>
           </div>
           <div class="form-check">
             <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="television">
+              <input [(ngModel)]="student.howknow" name="howknow" type="radio" class="form-check-input"
+                     id="optionsRadios2" value="television">
               television
             </label>
           </div>
           <div class="form-check">
             <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="Internet">
+              <input [(ngModel)]="student.howknow" name="howknow" type="radio" class="form-check-input"
+                     id="optionsRadios3" value="Internet">
               Internet
             </label>
           </div>
           <div class="form-check">
             <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios4" value="other">
+              <input [(ngModel)]="student.howknow" name="howknow" type="radio" class="form-check-input"
+                     id="optionsRadios4" value="other">
               other
             </label>
           </div>
         </fieldset>
         <div class="form-group">
-          <textarea class="form-control" rows="3" placeholder="Comments"></textarea>
+          <textarea [(ngModel)]="student.comments" name="comments" class="form-control" rows="3" placeholder="Comments"></textarea>
         </div>
         <button type="submit" class="btn btn-primary mx-3">Submit</button>
         <button type="button" class="btn btn-primary mx-3 float-right">Cancel</button>

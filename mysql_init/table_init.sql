@@ -9,5 +9,14 @@ CREATE TABLE student (
     phone varchar(50) not null,
     email varchar(50) not null,
     fdate varchar(50) not null,
-    visited_at timestamp
+    recommend varchar(50),
+    howknow varchar(50),
+    comments varchar(50),
+    visited_at timestamp,
+    _students bit,
+    _location bit,
+    _campus bit,
+    _atmosphere bit,
+    _dormrooms bit,
+    _sports bit
 );

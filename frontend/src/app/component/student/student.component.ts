@@ -13,6 +13,15 @@ type StudentModel = {
   phone: string;
   visitedAt: string;
   fDate: string;
+  recommend: string;
+  howknow: string;
+  comments: string;
+  _students: boolean;
+  _location: boolean;
+  _campus: boolean;
+  _atmosphere: boolean;
+  _dormrooms: boolean;
+  _sports: boolean;
 };
 
 @Component({

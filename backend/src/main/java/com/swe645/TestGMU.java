@@ -13,7 +13,7 @@ public class TestGMU {
     Timestamp timestamp = Timestamp.valueOf(LocalDateTime.now());
     System.out.println("now: " + timestamp);
     StudentBean student = new StudentBean(1232323, "Mike", "Doe", "Fairfax",
-        22030, "fairfax", "VA", "202", "mike@gmail.com", timestamp);
+        22030, "fairfax", "VA", "202", "mike@gmail.com", timestamp,"2020-11-11","Likely","friends", "rand", true,false,false,true,false,false);
     addStudent(student);
     getStudents();
     entityManagerFactory.close();
