@@ -2,7 +2,7 @@
   <!--  form-->
   <form id="survey-form" autocomplete="on" #studentForm="ngForm"
         ngNativeValidate (ngSubmit)="submit()">
-    {{studentForm.value | json}}
+<!--    {{studentForm.value | json}}-->
     <fieldset>
       <!-- <legend class="h3">Hey patriot please fill in the form</legend> -->
       <div class="form-group">
@@ -64,31 +64,6 @@
           <i>Date</i>
           <input [(ngModel)]="student.fDate" name="date" type="date" class="form-control"
                  placeholder="Date" required>
-        </div>
-      </div>
-      <div class="form-group">
-        <input type="url" class="form-control"
-               placeholder="URL">
-      </div>
-      <div class="form-group">
-        <legend>When do you graduate from high-school?</legend>
-        <div class="form-flex">
-          <input class="form-control" list="months" placeholder="month">
-          <datalist id="months">
-            <option value="January">
-            <option value="February">
-            <option value="March">
-            <option value="April">
-            <option value="May">
-            <option value="June">
-            <option value="July">
-            <option value="August">
-            <option value="September">
-            <option value="October">
-            <option value="November">
-            <option value="December">
-          </datalist>
-          <input class="form-control" type="text" placeholder="year">
         </div>
       </div>
       <div class="form-group">
