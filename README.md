@@ -19,7 +19,9 @@ For this project we will be using 3 Amazon `EC2` instances to serve each service
 To build and run this project we will be using `Jenkins` to automate the build. To achieve this goal we simply run this script.
 
 ```sh
-docker service rm $(docker service ls -q) || true # remove all previous services 
+docker service rm $(docker service ls -q) || true # remove all previous services
+docker rm -vf $(docker ps -a -q) || true
+docker rmi -f $(docker images -a -q) || true
 docker service create --name registry --publish 5000:5000 registry:2 # service registry to make images available across nodes
 docker-compose up -d # make images
 docker-compose down --volumes # remove container created by compose
