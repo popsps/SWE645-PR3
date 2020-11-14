@@ -1,4 +1,7 @@
-# SWE645-PROJECT3 test 9.2
+# SWE645-PROJECT3 test 9.6
+
+## [EC2 Link](http://ec2-3-235-245-12.compute-1.amazonaws.com/) 
+
 
 This project is a container orchestration of 3 services. A frontend web application implemented using `Angular` and `nginx`. A backend application implemented using `JAVA EE` and `Tomcat`. And finally a persistent `MySQL` database to keep track of data. In this piece, we will explain each of these services in more detail.
 
@@ -16,10 +19,10 @@ To build and run this project we will be using `Jenkins` to automate the build. 
 
 ```sh
 docker service rm $(docker service ls -q) || true # remove all previous services 
-docker service create --name registry --publish 5000:5000 registry:2 # service registry to make images availabel cross nodes
+docker service create --name registry --publish 5000:5000 registry:2 # service registry to make images available across nodes
 docker-compose up -d # make images
 docker-compose down --volumes # remove container created by compose
-docker-compose push # make images availbe acrosss nodes
+docker-compose push # make images availbe across nodes
 docker stack deploy -c ./docker-compose.yml swe645 # run the container ochestration stack
 ```
 
