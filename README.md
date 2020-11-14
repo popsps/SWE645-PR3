@@ -2,6 +2,7 @@
 
 ## [EC2 Link](http://ec2-3-235-245-12.compute-1.amazonaws.com/) 
 
+## [Docker registry](https://docs.docker.com/engine/swarm/stack-deploy/#set-up-a-docker-registry)
 
 This project is a container orchestration of 3 services. A frontend web application implemented using `Angular` and `nginx`. A backend application implemented using `JAVA EE` and `Tomcat`. And finally a persistent `MySQL` database to keep track of data. In this piece, we will explain each of these services in more detail.
 
